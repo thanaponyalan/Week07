@@ -6,41 +6,29 @@ namespace Lab07
     {
         static void Main(string[] args)
         {
-            TraineeStudent ts = new TraineeStudent("Thanapon",300);
-            Console.WriteLine(ts.getSalary);
-            Console.WriteLine(ts.getStudentID);
-            Console.ReadLine();
+            
         }
     }
-    class TraineeStudent
+    class Teacher
     {
-        private string StudentID;
-        private int salary;
-
-        public TraineeStudent(string id,int sal)
+        // constructor (for initial private/protected variables)
+        public Teacher(string name, float billingRate)
         {
-            this.StudentID = id;
-            if (sal >= 300 && sal <= 450)
-                this.salary = sal;
-            else
-                throw (new Exception("Error! invalid salary"));
+            this.name = name;
+            this.billingRate = billingRate;
         }
-
-        public string getStudentID
+        // figure out the charge based on teacher's rate
+        public float CalculateCharge(float hours)
         {
-            get
-            {
-                return StudentID;
-            }
+            return (hours * billingRate);
         }
-
-        public int getSalary
+        // return the name of this type
+        public string TypeName()
         {
-            get
-            {
-                return salary;
-            }
+            return ("Teacher");
         }
+        private string name;
+        protected float billingRate;
     }
 
 }
