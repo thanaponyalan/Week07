@@ -6,54 +6,39 @@ namespace Lab07
     {
         static void Main(string[] args)
         {
-            Student su = new Student("Student Name", "12345678");
-            try
-            {
-                // su.Name = "My name";
-                su.GPA = 4.0f;
-                Console.WriteLine("Student name : " + su.Name);
-                Console.WriteLine("Student ID   : " + su.ID);
-                Console.WriteLine("Student GPA  : " + su.GPA);
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-            }
+            TraineeStudent ts = new TraineeStudent("Thanapon",300);
+            Console.WriteLine(ts.getSalary);
+            Console.WriteLine(ts.getStudentID);
             Console.ReadLine();
         }
     }
-    class Student
+    class TraineeStudent
     {
-        private string name;
-        private string id;
-        private float gpa;
+        private string StudentID;
+        private int salary;
 
-        public Student(string Name, string ID)
+        public TraineeStudent(string id,int sal)
         {
-            this.name = Name;   // assign auto variable to the field
-            this.id = ID;
+            this.StudentID = id;
+            if (sal >= 300 && sal <= 450)
+                this.salary = sal;
+            else
+                throw (new Exception("Error! invalid salary"));
         }
 
-        public string Name
-        {
-            get { return name; }
-        }
-        public string ID
-        {
-            get { return id; }
-        }
-        public float GPA
+        public string getStudentID
         {
             get
             {
-                return gpa;
+                return StudentID;
             }
-            set
+        }
+
+        public int getSalary
+        {
+            get
             {
-                if (value > 0.0 && value <= 4.0)
-                    gpa = value;
-                else
-                    throw (new Exception("Error!!!! invalid GPA"));
+                return salary;
             }
         }
     }
